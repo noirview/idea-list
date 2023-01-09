@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  backend:
+    working_dir: /app
+    build: 
+      dockerfile: ./build/backend/Dockerfile
+    volumes:
+      - ./src/backend:/app
+    ports:
+      - 9000:9000
+
+  database:
+    image: mysql:8.0.31-oracle
+    environment:
+      MYSQL_ROOT_PASSWORD: "mysql"
+    volumes:
+      - ./persistance/database:/var/lib/mysql
+    ports:
+      - 3306:3306
