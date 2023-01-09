@@ -1,12 +1,7 @@
 FROM php:8.2-fpm-alpine3.17
 
-# RUN apk add postgresql-dev \
-  # libzip-dev 
-
-# RUN docker-php-ext-install  zip \
-  # pgsql \
-  # pdo \
-  # pdo_pgsql
+RUN docker-php-ext-install pdo \
+  pdo_mysql
 
 RUN apk update
 RUN apk add git
