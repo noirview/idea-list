@@ -15,30 +15,30 @@
 
     <div id="content">
 
-    @include('admin.components.page-header', [
-        'title' => 'Список идей',
+        @include('admin.components.page-header', [
+            'title' => 'Список идей',
 
-        'createButton' => [
-            'url' => route('admin.idea.create'),
-            'title' => 'Добавить идею',
-        ],
+            'createButton' => [
+                'url' => route('admin.idea.create'),
+                'title' => 'Добавить идею',
+            ],
 
-        'navigation' => [
-            [
-                'title' => 'Инструкция',
-                'url' => '#'
+            'navigation' => [
+                [
+                    'title' => 'Инструкция',
+                    'url' => '#'
+                ],
+                [
+                    'title' => 'Категории идей',
+                    'url' => route('admin.category.index'),
+                ],
+                [
+                    'title' => 'Список идей',
+                    'url' => route('admin.idea.index'),
+                    'active' => true,
+                ],
             ],
-            [
-                'title' => 'Категории идей',
-                'url' => route('admin.category.index'),
-            ],
-            [
-                'title' => 'Список идей',
-                'url' => route('admin.idea.index'),
-                'active' => true,
-            ],
-        ],
-    ])
+        ])
 
         <div class="filter">
             <div class="_container">
@@ -47,7 +47,9 @@
                         <div class="select filter-select">
                             <button class="btn select__btn filter-select__btn">
                                 <span>Статус</span>
-                                <svg><use xlink:href="./img/sprite.svg#drop"></use></svg>
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#drop"></use>
+                                </svg>
                             </button>
                             <ul class="select__list filter-select__list">
                                 <li class="select__item filter-select__item">Статус 1</li>
@@ -58,7 +60,9 @@
                         <div class="select filter-select">
                             <button class="btn select__btn filter-select__btn">
                                 <span>Дата</span>
-                                <svg><use xlink:href="./img/sprite.svg#drop"></use></svg>
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#drop"></use>
+                                </svg>
                             </button>
                             <ul class="select__list filter-select__list">
                                 <li class="select__item filter-select__item">Дата 1</li>
@@ -69,7 +73,11 @@
                         <div class="select filter-select filter-select__search">
                             <div class="filter-select__search-froup">
                                 <input type="text" class="filter-select__btn form-control" placeholder="Поиск...">
-                                <button class="btn filter-select__search-btn"><svg><use xlink:href="./img/sprite.svg#search"></use></svg></button>
+                                <button class="btn filter-select__search-btn">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#search"></use>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -77,7 +85,9 @@
                         <div class="select filter-select">
                             <button class="btn select__btn filter-select__btn">
                                 <span>Сортировать по...</span>
-                                <svg><use xlink:href="./img/sprite.svg#drop"></use></svg>
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#drop"></use>
+                                </svg>
                             </button>
                             <ul class="select__list filter-select__list">
                                 <li class="select__item filter-select__item">По возрастанию</li>
@@ -88,8 +98,18 @@
                             </ul>
                         </div>
                         <div class="filter-actions">
-                            <button class="btn filter-reset"><svg><use xlink:href="./img/sprite.svg#close"></use></svg>Сбросить</button>
-                            <button class="btn btn__main filter-submit"><svg><use xlink:href="./img/sprite.svg#check"></use></svg>Применить</button>
+                            <button class="btn filter-reset">
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#close"></use>
+                                </svg>
+                                Сбросить
+                            </button>
+                            <button class="btn btn__main filter-submit">
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                </svg>
+                                Применить
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -113,51 +133,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Афиша для продажи билетов онлайн и их проверки </td>
-                        <td>Александр Иванов</td>
-                        <td>1.09.2022</td>
-                        <td>Добавить новую функцию проверки билета с телефона...</td>
-                        <td>98</td>
-                        <td>Включена</td>
-                        <td>
-                            <div>
-                                <a href="#"><svg><use xlink:href="./img/sprite.svg#arrow"></use></svg></a>
-                                <a href="#"><svg><use xlink:href="./img/sprite.svg#close"></use></svg></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Афиша для продажи билетов онлайн и их проверки </td>
-                        <td>Александр Иванов</td>
-                        <td>1.09.2022</td>
-                        <td>Добавить новую функцию проверки билета с телефона...</td>
-                        <td>98</td>
-                        <td>Включена</td>
-                        <td>
-                            <div>
-                                <a href="#"><svg><use xlink:href="./img/sprite.svg#arrow"></use></svg></a>
-                                <a href="#"><svg><use xlink:href="./img/sprite.svg#close"></use></svg></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Афиша для продажи билетов онлайн и их проверки </td>
-                        <td>Александр Иванов</td>
-                        <td>1.09.2022</td>
-                        <td>Добавить новую функцию проверки билета с телефона...</td>
-                        <td>98</td>
-                        <td>Включена</td>
-                        <td>
-                            <div>
-                                <a href="#"><svg><use xlink:href="./img/sprite.svg#arrow"></use></svg></a>
-                                <a href="#"><svg><use xlink:href="./img/sprite.svg#close"></use></svg></a>
-                            </div>
-                        </td>
-                    </tr>
+                    @foreach($ideas as $idea)
+                        @include('admin.components.idea.item', [
+                            'idea' => $idea,
+                        ])
+                    @endforeach
                     </tbody>
                 </table>
             </div>
@@ -169,18 +149,9 @@
 
 </div>
 
-
+@include('admin.components.scripts')
 
 <!-- JQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<!-- Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-</script>
-
-<!-- Custom -->
-<script src="./js/main.js"></script>
 </body>
 
 </html>

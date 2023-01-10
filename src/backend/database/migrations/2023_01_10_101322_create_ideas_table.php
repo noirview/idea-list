@@ -15,6 +15,17 @@ class CreateIdeasTable extends Migration
     {
         Schema::create('ideas', function (Blueprint $table) {
             $table->id();
+
+            $table->string('author_name');
+            $table->string('title');
+            $table->string('description');
+
+            $table->integer('status');
+            $table->integer('count_likes');
+
+            $table->foreignId('category_id')->constrained()
+                ->cascadeOnUpdate()->cascadeOnDelete();
+
             $table->timestamps();
         });
     }

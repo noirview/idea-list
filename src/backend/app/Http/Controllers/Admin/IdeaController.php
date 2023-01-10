@@ -13,7 +13,14 @@ class IdeaController extends Controller
      */
     public function index()
     {
-        return view('admin.ideas.index');
+        $ideas = Idea::query()
+            ->select(['id', 'author_name', 'title', 'status', 'category_id', 'count_likes', 'created_at'])
+            ->with('category:id,title')
+            ->simplePaginate();
+
+        return view('admin.ideas.index', [
+            'ideas' => $ideas,
+        ]);
     }
 
     /**

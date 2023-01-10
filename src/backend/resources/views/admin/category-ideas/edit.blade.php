@@ -41,17 +41,17 @@
                 'title' => 'Добавление категории',
 
                 'cancelRoute' => route('admin.category.index'),
-                'createRoute' => route('admin.category.store'),
+                'saveRoute' => route('admin.category.update', ['id' => $category->id]),
             ])
 
             <div class="add-new__body">
                 <div class="_container">
                     <div class="add-new__form">
                         <div class="add-new__form-group">
-                            <input type="text" class="add-new__form-control form-control" id="title" placeholder="Название">
+                            <input type="text" class="add-new__form-control form-control" id="title" value="{{ $category->title }}" placeholder="Название">
                         </div>
                         <div class="add-new__form-group">
-                            <textarea class="add-new__form-control form-control textarea" id="description" placeholder="Описание"></textarea>
+                            <textarea class="add-new__form-control form-control textarea" id="description" placeholder="Описание">{{ $category->description }}</textarea>
                         </div>
                         <div class="add-new__form-group">
                             <label class="add-new__drop-zone drop-zone">

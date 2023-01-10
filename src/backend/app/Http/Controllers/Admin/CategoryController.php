@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Category\StoreRequest;
+use App\Http\Requests\Category\UpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -13,7 +15,15 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category-ideas.index');
+        $categories = Category::query()
+            ->select(['id', 'title', 'description', 'status'])
+            ->withCount('ideas')
+            ->withSum('ideas', 'count_likes')
+            ->simplePaginate();
+
+        return view('admin.category-ideas.index', [
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -26,13 +36,13 @@ class CategoryController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $category = Category::query()
+            ->create($request->validated());
+
+        return redirect(route('admin.category.index'));
     }
 
     /**
@@ -48,25 +58,27 @@ class CategoryController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(int $id)
     {
-        //
+        $category = Category::query()
+            ->select(['id', 'title', 'description'])
+            ->find($id);
+
+        return view('admin.category-ideas.edit', [
+            'category' => $category,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(UpdateRequest $request, int $id)
     {
-        //
+        Category::query()
+            ->where('id', $id)
+            ->update($request->validated());
+
     }
 
     /**
@@ -75,8 +87,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(int $id)
     {
-        //
+        Category::query()
+            ->where('id', $id)
+            ->delete();
     }
 }
