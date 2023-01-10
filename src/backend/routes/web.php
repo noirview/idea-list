@@ -14,5 +14,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('web.index');
 });
+
+Route::as('admin.')
+    ->prefix('admin')
+    ->namespace('App\Http\Controllers\Admin')
+    ->group(function () {
+
+        Route::as('category.')
+            ->prefix('category')
+            ->controller('CategoryController')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/create', 'create')->name('create');
+            });
+
+        Route::as('idea.')
+            ->prefix('idea')
+            ->controller('IdeaController')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/create', 'create')->name('create');
+            });
+
+    });
