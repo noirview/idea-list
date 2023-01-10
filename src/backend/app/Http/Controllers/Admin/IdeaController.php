@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Idea\StoreRequest;
+use App\Http\Requests\Idea\UpdateRequest;
+use App\Models\Category;
 use App\Models\Idea;
 use Illuminate\Http\Request;
 
@@ -37,53 +40,47 @@ class IdeaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Idea  $idea
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Idea $idea)
-    {
-        //
+        Idea::query()
+            ->create($request->validated());
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Idea  $idea
-     * @return \Illuminate\Http\Response
      */
-    public function edit(Idea $idea)
+    public function edit(int $id)
     {
-        //
+        $categories = Category::query()
+            ->select(['id', 'title'])
+            ->get();
+
+        $idea = Idea::query()
+            ->find($id);
+
+        return view('admin.ideas.edit', [
+            'categories' => $categories,
+            'idea' => $idea,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Idea  $idea
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Idea $idea)
+    public function update(UpdateRequest $request, int $id)
     {
-        //
+        Idea::query()
+            ->where('id', $id)
+            ->update($request->validated());
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Idea  $idea
-     * @return \Illuminate\Http\Response
      */
-    public function destroy(Idea $idea)
+    public function destroy(int $id)
     {
-        //
+        Idea::query()
+            ->where('id', $id)
+            ->delete();
     }
 }

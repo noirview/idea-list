@@ -8,7 +8,7 @@
     <td>{{ \App\Enums\IdeaStatus::getDescription($idea->status) }}</td>
     <td>
         <div>
-            <a href="{{ route('admin.category.edit') }}">
+            <a href="{{ route('admin.idea.edit', ['id' => $idea->id]) }}">
                 <svg>
                     <use xlink:href="{{ asset('img/admin/sprite.svg') }}#arrow"></use>
                 </svg>
