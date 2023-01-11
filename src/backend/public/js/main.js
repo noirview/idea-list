@@ -89,8 +89,6 @@ $(document).ready(function(){
 
    // Add to fav
    $(document).on('click', '.ideas-item-fav', function(){
-      if ($(this).hasClass('active'))
-
        $(this).toggleClass('active')
    })
 
