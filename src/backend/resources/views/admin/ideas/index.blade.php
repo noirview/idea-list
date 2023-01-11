@@ -106,7 +106,7 @@
                             </button>
                             <button class="btn btn__main filter-submit">
                                 <svg>
-                                    <use xlink:href="./img/sprite.svg#check"></use>
+                                    <use xlink:href="{{ asset('img/sprite.svg') }}#check"></use>
                                 </svg>
                                 Применить
                             </button>

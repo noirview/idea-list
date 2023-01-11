@@ -43,7 +43,8 @@
             <div class="_container">
                 <div class="page-desc-body">
                     <p>Мы постоянно в поисках актуальных инновационных идей, которые мы могли бы воплотить в жизнь.</p>
-                    <p>Эта страница - возможность каждому поделиться своими мыслями по улучшению или дополнению к нашим проектам и готовым решениям, и выразить поддержку идеям, предложенным другими.</p>
+                    <p>Эта страница - возможность каждому поделиться своими мыслями по улучшению или дополнению к нашим
+                        проектам и готовым решениям, и выразить поддержку идеям, предложенным другими.</p>
                 </div>
             </div>
         </section>
@@ -51,58 +52,36 @@
         <section class="category-list">
             <div class="_container">
                 <div class="category-list-header">
-                    <h3 class="category-list-title">Выберите проект, в который Вы хотите добавить идею или проголосовать</h3>
+                    <h3 class="category-list-title">Выберите проект, в который Вы хотите добавить идею или
+                        проголосовать</h3>
                     <div class="swiper-nav">
-                        <div class="slider-prev"><svg><use xlink:href="./img/sprite.svg#nav-prev"></use></svg></div>
-                        <div class="slider-next"><svg><use xlink:href="./img/sprite.svg#nav-next"></use></svg></div>
+                        <div class="slider-prev">
+                            <svg>
+                                <use xlink:href="{{ asset('img/sprite.svg') }}#nav-prev"></use>
+                            </svg>
+                        </div>
+                        <div class="slider-next">
+                            <svg>
+                                <use xlink:href="{{ asset('img/sprite.svg') }}#nav-next"></use>
+                            </svg>
+                        </div>
                     </div>
                 </div>
                 <div class="category-list-slider swiper-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <article class="category-item">
-                                <div class="category-item-content">
-                                    <figure class="category-item-img"><img src="./img/1.png" alt=""></figure>
-                                    <div class="category-item-body">
-                                        <h4 class="category-item-title">Deposit Platform</h4>
-                                        <p class="category-item-desc">Платформа объединяющая Юридические лица и Банки с целью создания сделок по размещению Депозитов.</p>
+                        @foreach($categories as $category)
+                            <div class="swiper-slide">
+                                <article class="category-item">
+                                    <div class="category-item-content">
+                                        <figure class="category-item-img"><img src="./img/1.png" alt=""></figure>
+                                        <div class="category-item-body">
+                                            <h4 class="category-item-title">{{ $category->title }}</h4>
+                                            <p class="category-item-desc">{{ $category->description }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="swiper-slide">
-                            <article class="category-item">
-                                <div class="category-item-content">
-                                    <figure class="category-item-img"><img src="./img/2.png" alt=""></figure>
-                                    <div class="category-item-body">
-                                        <h4 class="category-item-title">Афиша для продажи билетов онлайн</h4>
-                                        <p class="category-item-desc">и их проверки с телефона без дополнительного оборудования. Возможна интеграция в существующий сайт или создание нового. </p>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="swiper-slide">
-                            <article class="category-item">
-                                <div class="category-item-content">
-                                    <figure class="category-item-img"><img src="./img/3.png" alt=""></figure>
-                                    <div class="category-item-body">
-                                        <h4 class="category-item-title">Сервис по предварительному заказу онлайн</h4>
-                                        <p class="category-item-desc">и доставке до места для стадионов и массовых мероприятий. Заказ приходит в кассу заведения и оплачивается онлайн.</p>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="swiper-slide">
-                            <article class="category-item">
-                                <div class="category-item-content">
-                                    <figure class="category-item-img"><img src="./img/4.png" alt=""></figure>
-                                    <div class="category-item-body">
-                                        <h4 class="category-item-title">Приложения для IOS и Android + Сайты в аренду</h4>
-                                        <p class="category-item-desc">Самый топовый функционал для Хореки и Розничной торговли с оплатой по принципу ежемесячной подписки.</p>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
+                                </article>
+                            </div>
+                        @endforeach
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -116,7 +95,9 @@
                         <div class="ideas-filter-select select">
                             <button class="btn select__btn ideas-filter-btn">
                                 <span>Статус</span>
-                                <svg><use xlink:href="./img/sprite.svg#drop"></use></svg>
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#drop"></use>
+                                </svg>
                             </button>
                             <ul class="ideas-filter-list select__list">
                                 <li class="ideas-filter-item select__item" data-value="status-1">Статус 1</li>
@@ -127,7 +108,9 @@
                         <div class="ideas-filter-select select">
                             <button class="btn select__btn ideas-filter-btn">
                                 <span>Сортировать по...</span>
-                                <svg><use xlink:href="./img/sprite.svg#drop"></use></svg>
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#drop"></use>
+                                </svg>
                             </button>
                             <ul class="ideas-filter-list select__list">
                                 <li class="ideas-filter-item select__item" data-value="sort-1">По возрастанию</li>
@@ -137,110 +120,58 @@
                             <input type="text" class="select__input" hidden/>
                         </div>
                     </div>
-                    <button class="btn btn__main ideas-filter-modal" data-bs-toggle="modal" data-bs-target="#idea">Поделиться идеей</button>
+                    <button class="btn btn__main ideas-filter-modal" data-bs-toggle="modal" data-bs-target="#idea">
+                        Поделиться идеей
+                    </button>
                 </div>
                 <div class="ideas-list">
-                    <article class="ideas-item">
-                        <div class="ideas-item-content">
-                            <h3 class="ideas-item-title">Новое приложение, которое позволяет предлагать идеи<a href="#"><svg><use xlink:href="./img/sprite.svg#skrepka"></use></svg></a></h3>
-                            <div class="ideas-item-info">
-                                <div class="ideas-item-proccess">в процессе</div>
-                                <p>от: Максим</p>
-                                <p>20.06.2022</p>
-                            </div>
-                            <div class="ideas-item-desc">
-                                <div class="ideas-item-desc-text">
-                                    <p>Хотелось бы разработать новое приложение для возможности давать обратную связь по продуктам компании, предлагать идеи по их улучшению или идеи для разработки новых продуктов.</p>
+                    @foreach($ideas as $idea)
+                        <article class="ideas-item">
+                            <div class="ideas-item-content">
+                                <h3 class="ideas-item-title">{{ $idea->title }}<a
+                                        href="#">
+                                        <svg>
+                                            <use xlink:href="./img/sprite.svg#skrepka"></use>
+                                        </svg>
+                                    </a></h3>
+                                <div class="ideas-item-info">
+                                    <div class="ideas-item-proccess">{{ \App\Enums\IdeaStatus::getDescription($idea->status) }}</div>
+                                    <p>от: {{ $idea->author_name }}</p>
+                                    <p>{{ $idea->created_at->format('d.m.Y') }}</p>
                                 </div>
-                            </div>
-                            <a href="#" class="ideas-item-desc-more" data-up="Свернуть" data-down="Читать далее">Читать далее</a>
-                        </div>
-                        <div class="ideas-item-fav">
-                            <svg><use xlink:href="{{ asset('img/sprite.svg') }}#fav"></use></svg>
-                            <span>24</span>
-                        </div>
-                    </article>
-                    <article class="ideas-item">
-                        <div class="ideas-item-content">
-                            <h3 class="ideas-item-title">Новое приложение, которое позволяет предлагать идеи<a href="#"><svg><use xlink:href="./img/sprite.svg#skrepka"></use></svg></a></h3>
-                            <div class="ideas-item-info">
-                                <div class="ideas-item-proccess">в процессе</div>
-                                <p>от: Максим</p>
-                                <p>20.06.2022</p>
-                            </div>
-                            <div class="ideas-item-desc">
-                                <div class="ideas-item-desc-text">
-                                    <p>Хотелось бы разработать новое приложение для возможности давать обратную связь по продуктам компании, предлагать идеи по их улучшению или идеи для разработки новых продуктов.</p>
-                                    <p>Хотелось бы разработать новое приложение для возможности давать обратную связь по продуктам компании, предлагать идеи по их улучшению или идеи для разработки новых продуктов.</p>
-                                    <p>Хотелось бы разработать новое приложение для возможности давать обратную связь по продуктам компании, предлагать идеи по их улучшению или идеи для разработки новых продуктов.</p>
-                                    <p>Хотелось бы разработать новое приложение для возможности давать обратную связь по продуктам компании, предлагать идеи по их улучшению или идеи для разработки новых продуктов.</p>
-                                    <p>Хотелось бы разработать новое приложение для возможности давать обратную связь по продуктам компании, предлагать идеи по их улучшению или идеи для разработки новых продуктов.</p>
+                                <div class="ideas-item-desc">
+                                    <div class="ideas-item-desc-text">
+                                        <p>{{ $idea->description }}</p>
+                                    </div>
                                 </div>
+                                <a href="#" class="ideas-item-desc-more" data-up="Свернуть" data-down="Читать далее">Читать
+                                    далее</a>
                             </div>
-                            <a href="#" class="ideas-item-desc-more" data-up="Свернуть" data-down="Читать далее">Читать далее</a>
-                        </div>
-                        <div class="ideas-item-fav">
-                            <svg><use xlink:href="./img/sprite.svg#fav"></use></svg>
-                            <span>24</span>
-                        </div>
-                    </article>
-                    <article class="ideas-item">
-                        <div class="ideas-item-content">
-                            <h3 class="ideas-item-title">Новое приложение, которое позволяет предлагать идеи<a href="#"><svg><use xlink:href="./img/sprite.svg#skrepka"></use></svg></a></h3>
-                            <div class="ideas-item-info">
-                                <div class="ideas-item-proccess">в процессе</div>
-                                <p>от: Максим</p>
-                                <p>20.06.2022</p>
+                            <div class="ideas-item-fav">
+                                <svg>
+                                    <use xlink:href="{{ asset('img/sprite.svg') }}#fav"></use>
+                                </svg>
+                                <span>{{ $idea->count_likes }}</span>
                             </div>
-                            <div class="ideas-item-desc">
-                                <div class="ideas-item-desc-text">
-                                    <p>Хотелось бы разработать новое приложение для возможности давать обратную связь по продуктам компании, предлагать идеи по их улучшению или идеи для разработки новых продуктов.</p>
-                                    <p>Хотелось бы разработать новое приложение для возможности давать обратную связь по продуктам компании, предлагать идеи по их улучшению или идеи для разработки новых продуктов.</p>
-                                    <p>Хотелось бы разработать новое приложение для возможности давать обратную связь по продуктам компании, предлагать идеи по их улучшению или идеи для разработки новых продуктов.</p>
-                                    <p>Хотелось бы разработать новое приложение для возможности давать обратную связь по продуктам компании, предлагать идеи по их улучшению или идеи для разработки новых продуктов.</p>
-                                    <p>Хотелось бы разработать новое приложение для возможности давать обратную связь по продуктам компании, предлагать идеи по их улучшению или идеи для разработки новых продуктов.</p>
-                                </div>
-                            </div>
-                            <a href="#" class="ideas-item-desc-more" data-up="Свернуть" data-down="Читать далее">Читать далее</a>
-                        </div>
-                        <div class="ideas-item-fav">
-                            <svg><use xlink:href="./img/sprite.svg#fav"></use></svg>
-                            <span>24</span>
-                        </div>
-                    </article>
-                    <article class="ideas-item">
-                        <div class="ideas-item-content">
-                            <h3 class="ideas-item-title">Новое приложение, которое позволяет предлагать идеи<a href="#"><svg><use xlink:href="./img/sprite.svg#skrepka"></use></svg></a></h3>
-                            <div class="ideas-item-info">
-                                <div class="ideas-item-proccess">в процессе</div>
-                                <p>от: Максим</p>
-                                <p>20.06.2022</p>
-                            </div>
-                            <div class="ideas-item-desc">
-                                <div class="ideas-item-desc-text">
-                                    <p>Хотелось бы разработать новое приложение для возможности давать обратную связь по продуктам компании, предлагать идеи по их улучшению или идеи для разработки новых продуктов.</p>
-                                    <p>Хотелось бы разработать новое приложение для возможности давать обратную связь по продуктам компании, предлагать идеи по их улучшению или идеи для разработки новых продуктов.</p>
-                                    <p>Хотелось бы разработать новое приложение для возможности давать обратную связь по продуктам компании, предлагать идеи по их улучшению или идеи для разработки новых продуктов.</p>
-                                    <p>Хотелось бы разработать новое приложение для возможности давать обратную связь по продуктам компании, предлагать идеи по их улучшению или идеи для разработки новых продуктов.</p>
-                                    <p>Хотелось бы разработать новое приложение для возможности давать обратную связь по продуктам компании, предлагать идеи по их улучшению или идеи для разработки новых продуктов.</p>
-                                </div>
-                            </div>
-                            <a href="#" class="ideas-item-desc-more" data-up="Свернуть" data-down="Читать далее">Читать далее</a>
-                        </div>
-                        <div class="ideas-item-fav">
-                            <svg><use xlink:href="./img/sprite.svg#fav"></use></svg>
-                            <span>24</span>
-                        </div>
-                    </article>
+                        </article>
+                    @endforeach
                 </div>
                 <div class="ideas-pagination">
                     <ul>
-                        <li class="disabled"><a href="#"><svg><use xlink:href="./img/sprite.svg#prev-page"></use></svg></a></li>
+                        <li class="disabled"><a href="#">
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#prev-page"></use>
+                                </svg>
+                            </a></li>
                         <li class="active"><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">4</a></li>
-                        <li><a href="#"><svg><use xlink:href="./img/sprite.svg#next-page"></use></svg></a></li>
+                        <li><a href="#">
+                                <svg>
+                                    <use xlink:href="./img/sprite.svg#next-page"></use>
+                                </svg>
+                            </a></li>
                     </ul>
                 </div>
             </div>
@@ -249,12 +180,17 @@
         <div class="modal fade modal-idea" id="idea" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <button type="button" class="btn modal-close" data-bs-dismiss="modal"><svg><use xlink:href="./img/sprite.svg#close"></use></svg></button>
+                    <button type="button" class="btn modal-close" data-bs-dismiss="modal">
+                        <svg>
+                            <use xlink:href="./img/sprite.svg#close"></use>
+                        </svg>
+                    </button>
                     <h1 class="modal-idea-title">Поделиться идеей</h1>
                     <form class="modal-idea-form needs-validation" novalidate>
                         <div class="modal-idea-form-group">
                             <label for="firstname">Автор</label>
-                            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Автор" required>
+                            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Автор"
+                                   required>
                         </div>
                         <div class="modal-idea-form-group">
                             <label for="theme">Тема</label>
@@ -262,7 +198,8 @@
                         </div>
                         <div class="modal-idea-form-group">
                             <label for="comment">Описание</label>
-                            <textarea name="comment" id="comment" class="textarea form-control" placeholder="Описание" required></textarea>
+                            <textarea name="comment" id="comment" class="textarea form-control" placeholder="Описание"
+                                      required></textarea>
                         </div>
                         <div class="modal-idea-form-btn modal-idea-file">
                             <label class="modal-idea-form-file">
@@ -274,7 +211,11 @@
                                     <img data-src="" src="" alt="">
                                     <figcaption>Название файла</figcaption>
                                 </figure>
-                                <a href="#"><svg><use xlink:href="./img/sprite.svg#close"></use></svg></a>
+                                <a href="#">
+                                    <svg>
+                                        <use xlink:href="./img/sprite.svg#close"></use>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                         <div class="modal-idea-form-btn">

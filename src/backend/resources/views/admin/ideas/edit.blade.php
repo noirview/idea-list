@@ -18,11 +18,6 @@
         @include('admin.components.page-header', [
             'title' => 'Список идей',
 
-            'createButton' => [
-                'url' => route('admin.idea.create'),
-                'title' => 'Добавить идею',
-            ],
-
             'navigation' => [
                 [
                     'title' => 'Инструкция',
@@ -46,45 +41,53 @@
                 'title' => 'Добавление идеи',
 
                 'cancelRoute' => route('admin.idea.index'),
-                'saveRoute' => route('admin.idea.update'),
+                'saveRoute' => route('admin.idea.update', ['id' => $idea->id]),
             ])
 
             <div class="add-new__body">
                 <div class="_container">
                     <div class="add-new__form">
                         <div class="add-new__form-group">
-                            <div class="select add-new__select">
+                            <div id="category_id" class="select add-new__select">
                                 <button class="btn select__btn add-new__select-btn" type="button">
                                     <span>{{ $categories->where('id', $idea->category_id)->first()->title }}</span>
-                                    <svg><use xlink:href="{{ asset('img/sprite.svg') }}#drop"></use></svg>
+                                    <svg>
+                                        <use xlink:href="{{ asset('img/sprite.svg') }}#drop"></use>
+                                    </svg>
                                 </button>
                                 <ul class="select__list add-new__select-list">
                                     @foreach($categories as $category)
-                                        <li class="select__item add-new__select-item">{{ $category->title }}</li>
+                                        <li data-id="{{ $category->id }}" class="select__item add-new__select-item @if($idea->category_id == $category->id) active @endif">{{ $category->title }}</li>
                                     @endforeach
                                 </ul>
                             </div>
                         </div>
                         <div class="add-new__form-group">
-                            <input type="text" class="add-new__form-control form-control" value="{{ $idea->author_name }}" placeholder="Имя создателя">
+                            <input id="author_name" type="text" class="add-new__form-control form-control"
+                                   value="{{ $idea->author_name }}" placeholder="Имя создателя">
                         </div>
                         <div class="add-new__form-group">
-                            <input type="text" class="add-new__form-control form-control" value="{{ $idea->title }}" placeholder="Тема">
+                            <input id="title" type="text" class="add-new__form-control form-control" value="{{ $idea->title }}"
+                                   placeholder="Тема">
                         </div>
                         <div class="add-new__form-group">
-                            <input type="text" class="add-new__form-control form-control" value="{{ $idea->description }}" placeholder="Описание">
+                            <input id="description" type="text" class="add-new__form-control form-control"
+                                   value="{{ $idea->description }}" placeholder="Описание">
                         </div>
                         <div class="add-new__form-group">
                             <div class="add-new__row">
                                 <div class="add-new__col col-sm-6">
-                                    <div class="select add-new__select">
+                                    <div id="status" class="select add-new__select">
                                         <button class="btn select__btn add-new__select-btn" type="button">
-                                            <span>Статус</span>
-                                            <svg><use xlink:href="./img/sprite.svg#drop"></use></svg>
+                                            <span>{{ \App\Enums\IdeaStatus::getDescription($idea->status) }}</span>
+                                            <svg>
+                                                <use xlink:href="{{ asset('img/sprite.svg') }}#drop"></use>
+                                            </svg>
                                         </button>
                                         <ul class="select__list add-new__select-list">
-                                            <li class="select__item add-new__select-item">Статус 1</li>
-                                            <li class="select__item add-new__select-item">Статус 2</li>
+                                            @foreach(\App\Enums\IdeaStatus::getValues() as $status)
+                                                <li data-id="{{ $status }}" class="select__item add-new__select-item @if($idea->status == $status) active @endif">{{ \App\Enums\IdeaStatus::getDescription($status) }}</li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>

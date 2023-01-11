@@ -26,17 +26,10 @@ class StoreRequest extends FormRequest
     {
         return [
             'category_id' => 'required|integer',
+            'author_name' => 'required|string',
             'title' => 'required|string',
-            'description' => 'required|string'
+            'description' => 'required|string',
+            'status' => 'required|integer'
         ];
-    }
-
-    public function validated()
-    {
-        $validated = parent::validated();
-
-        return array_merge($validated, [
-            'status' => IdeaStatus::NEW,
-        ]);
     }
 }

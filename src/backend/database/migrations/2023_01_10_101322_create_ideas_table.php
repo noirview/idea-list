@@ -21,7 +21,7 @@ class CreateIdeasTable extends Migration
             $table->string('description');
 
             $table->integer('status');
-            $table->integer('count_likes');
+            $table->integer('count_likes')->default(0);
 
             $table->foreignId('category_id')->constrained()
                 ->cascadeOnUpdate()->cascadeOnDelete();

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-   
+
    // Select
    $(document).on("click", function(e) {
       if (!$(e.target).is(".select *")) {
@@ -22,7 +22,7 @@ $(document).ready(function(){
       $(this).closest('.select').find('.select__btn').next().slideUp(300);
       $(this).closest('.select').find('.select__input').val($(this).data('value'))
    });
-   
+
    // Textarea autoheight
    if ( document.querySelector('.textarea') ){
       let textarea = document.querySelector('.textarea')
@@ -33,7 +33,7 @@ $(document).ready(function(){
          e.target.style.height = e.target.scrollHeight + 2 + "px"
       })
    }
-   
+
    // Category slider
    if ( document.querySelector('.category-list-slider') ){
       new Swiper('.category-list-slider', {
@@ -49,24 +49,24 @@ $(document).ready(function(){
          },
          breakpoints: {
             320: {
-               
+
             },
             576: {
-               slidesPerView: 2,      
+               slidesPerView: 2,
                spaceBetween: 20
             },
             768: {
-               slidesPerView: 3,      
+               slidesPerView: 3,
                spaceBetween: 20
             },
             992: {
-               slidesPerView: 4,      
+               slidesPerView: 4,
                spaceBetween: 20
             }
          }
       });
    }
-   
+
    visibleMore()
    function visibleMore(){
       $(document).find('.ideas-item').each(function(){
@@ -75,7 +75,7 @@ $(document).ready(function(){
          }
       })
    }
-   
+
    // Show/hide post dosc
    $(document).on('click', '.ideas-item-desc-more', function(e){
       e.preventDefault()
@@ -89,7 +89,9 @@ $(document).ready(function(){
 
    // Add to fav
    $(document).on('click', '.ideas-item-fav', function(){
-      $(this).toggleClass('active')
+      if ($(this).hasClass('active'))
+
+       $(this).toggleClass('active')
    })
 
    $(document).on('click', '.category-item', function(){
@@ -98,16 +100,16 @@ $(document).ready(function(){
    })
 
    'use strict'
-    
+
    // Fetch all the forms we want to apply custom Bootstrap validation styles to
    const forms = document.querySelectorAll('.needs-validation')
- 
+
    // Loop over them and prevent submission
    Array.from(forms).forEach(form => {
       form.addEventListener('submit', event => {
          event.preventDefault()
          event.stopPropagation()
-         if (form.checkValidity()) {           
+         if (form.checkValidity()) {
             let name = form.querySelector('#firstname').value
             let title = form.querySelector('#theme').value
             let comment = form.querySelector('#comment').value
@@ -117,7 +119,7 @@ $(document).ready(function(){
             form.querySelectorAll('.form-control').forEach(elem => {
                elem.value = ''
                elem.classList.remove('is-invalid')
-            })    
+            })
             console.log(img)
             const modal = bootstrap.Modal.getInstance(document.querySelector('#idea'))
             modal.hide()
@@ -129,7 +131,7 @@ $(document).ready(function(){
                      <h3 class="ideas-item-title">${title}`
             if ( img !== '' ){
                ouput += `<a href="${img}" data-fancybox="idea"><svg><use xlink:href="./img/sprite.svg#skrepka"></use></svg></a>`
-            }               
+            }
             ouput += `</h3>
                      <div class="ideas-item-info">
                         <div class="ideas-item-proccess">новое</div>
@@ -157,7 +159,7 @@ $(document).ready(function(){
          }
       }, false)
    })
-   
+
    // Загрузка и удаление файла
    if ( document.querySelector('.modal-idea-file') ){
       document.querySelectorAll('.modal-idea-file').forEach(file => {
@@ -168,11 +170,11 @@ $(document).ready(function(){
 
          function updateThumbnail(zone, elem) {
             let thumbnailElement = zone.querySelector("figure img");
-         
+
             // Show thumbnail for image files
             if (elem.type.startsWith("image/")) {
                const reader = new FileReader();
-         
+
                reader.readAsDataURL(elem);
                reader.onload = () => {
                   thumbnailElement.src = reader.result;
@@ -196,11 +198,11 @@ $(document).ready(function(){
                updateThumbnail(file, input.files[0]);
             }
          });
-   
+
          let fileDelete = result.querySelector('a')
          fileDelete.addEventListener('click', function(e) {
             e.preventDefault()
-            
+
             // Очищаем название файла
             title.innerText = ''
 

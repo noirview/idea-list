@@ -57,6 +57,10 @@ $(document).ready(function(){
 
        let title = document.querySelector('#title').value
        let description = document.querySelector('#description').value
+       let author_name = document.querySelector('#author_name').value
+
+       let category_id = $('#category_id li.active').attr('data-id')
+       let status = $('#status li.active').attr('data-id')
 
        $.ajax({
            headers: {
@@ -66,7 +70,10 @@ $(document).ready(function(){
             url: $(this).attr('href'),
             data: {
                 title: title,
-                description: description
+                description: description,
+                author_name: author_name,
+                category_id: category_id,
+                status: status,
            },
        })
    })

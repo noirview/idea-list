@@ -13,7 +13,7 @@
                     <use xlink:href="{{ asset('img/admin/sprite.svg') }}#arrow"></use>
                 </svg>
             </a>
-            <a href="#">
+            <a href="{{ route('admin.idea.destroy', ['id' => $idea->id]) }}">
                 <svg>
                     <use xlink:href="{{ asset('img/admin/sprite.svg') }}#close"></use></svg></a>
         </div>

@@ -13,9 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('web.index');
-});
+Route::as('web.')
+    ->namespace('App\Http\Controllers\Web')
+    ->group(function () {
+
+        Route::as('page.')
+            ->controller('PageController')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+            });
+    });
 
 Route::as('admin.')
     ->prefix('admin')
